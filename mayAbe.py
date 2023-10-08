@@ -20,6 +20,14 @@ def check_name(name_t):
         return False
 
 
+def check_order(order):
+    regex_rule = r'^([a-zA-Z]+\ ?[a-zA-Z]*\,?\ ?)+$'
+    if re.match(regex_rule, order):
+        return True
+    else:
+        return False
+
+
 def build_sql_select_all_from_table(table_name):
     if check_name(table_name):
         return "SELECT * FROM " + table_name
@@ -41,13 +49,16 @@ def build_sql_select_custom_from_users(columns):
             if not check_name(column):
                 raise Exception("Hodnoty jsou zadany spatne!")
             else:
-                sql += ", "+column
+                sql += ", " + column
     sql += " FROM USER"
     return sql
 
 
 def build_sql_select_users_order_by_custom(order_by_section):
-    return "SELECT * FROM USER ORDER BY "+order_by_section
+    if check_order(order_by_section):
+        return "SELECT * FROM USER ORDER BY " + order_by_section
+    else:
+        raise Exception("Hodnoty jsou zadany spatne!")
 
 
 # Pro otestování základní funkcionality můžete použít níže uvedené printy

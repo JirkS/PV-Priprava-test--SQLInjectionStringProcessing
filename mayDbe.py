@@ -30,14 +30,14 @@ def check_email(email_t):
 
 def build_sql_update_email_by_id(email, id_t):
     if check_email(email) and check_id(id_t):
-        return "UPDATE uzivatel SET email = '"+email+"' WHERE id = "+str(id_t)
+        return "UPDATE uzivatel SET email = '" + email + "' WHERE id = "+str(id_t)
     else:
         raise Exception("Hodnoty jsou zadany spatne!")
 
 
 def build_sql_delete_all_by_table(table_name):
     if check_name(table_name):
-        return "DELETE FROM '"+table_name+"' WHERE 1=1"
+        return "DELETE FROM '" + table_name + "' WHERE 1=1"
     else:
         raise Exception("Hodnoty jsou zadany spatne!")
 
@@ -48,7 +48,7 @@ def build_sql_update_users(users):
         if not check_email(user["email"]) or not check_name(user["jmeno"]) or not check_id(user["id"]):
             raise Exception("Hodnoty jsou zadany spatne!")
         else:
-            sql += "UPDATE uzivatel SET email = '"+user["email"]+"', jmeno = '"+user["jmeno"]+"' WHERE id = "+str(user["id"]) + " "
+            sql += "UPDATE uzivatel SET email = '" + user["email"] + "', jmeno = '" + user["jmeno"] + "' WHERE id = " + str(user["id"]) + " "
     return sql
 
 

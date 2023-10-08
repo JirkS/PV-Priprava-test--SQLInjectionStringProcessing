@@ -20,9 +20,17 @@ def check_name(name_t):
         return False
 
 
+def check_order(order):
+    regex_rule = r'^([a-zA-Z]+\ ?[a-zA-Z]*\,?\ ?)+$'
+    if re.match(regex_rule, order):
+        return True
+    else:
+        return False
+
+
 def build_sql_select_user_by_username_and_variable_symbol(username, vs):
     if check_id(vs) and check_name(username):
-        return "SELECT * FROM USERS WHERE USERNAME = '"+username+"' AND VARIABLE_SYMBOL = " + str(vs)
+        return "SELECT * FROM USERS WHERE USERNAME = '" + username + "' AND VARIABLE_SYMBOL = " + str(vs)
     else:
         raise Exception("Hodnoty jsou zadany spatne!")
 
@@ -35,7 +43,10 @@ def build_sql_select_user_by_id(id_t):
 
 
 def build_sql_select_users_order_by_custom(order_by_section):
-    return "SELECT * FROM USER ORDER BY "+order_by_section
+    if check_order(order_by_section):
+        return "SELECT * FROM USER ORDER BY " + order_by_section
+    else:
+        raise Exception("Hodnoty jsou zadany spatne!")
 
 
 # Pro otestování základní funkcionality můžete použít níže uvedené printy
