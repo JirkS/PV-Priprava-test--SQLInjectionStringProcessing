@@ -48,7 +48,7 @@ def build_sql_insert_users(users):
         if not check_name(user["jmeno"]) or not check_email(user["email"]):
             raise Exception("Hodnoty jsou zadany spatne!")
         else:
-            sql += "INSERT INTO uzivatel (email, jmeno) VALUES ('" + user["email"] + "','" + user["jmeno"] + "') "
+            sql += "INSERT INTO uzivatel (email, jmeno) VALUES ('" + user["email"] + "','" + user["jmeno"] + "')\n"
     return sql
 
 

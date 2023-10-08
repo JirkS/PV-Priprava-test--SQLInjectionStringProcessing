@@ -48,7 +48,7 @@ def build_sql_update_users(users):
         if not check_email(user["email"]) or not check_name(user["jmeno"]) or not check_id(user["id"]):
             raise Exception("Hodnoty jsou zadany spatne!")
         else:
-            sql += "UPDATE uzivatel SET email = '" + user["email"] + "', jmeno = '" + user["jmeno"] + "' WHERE id = " + str(user["id"]) + " "
+            sql += "UPDATE uzivatel SET email = '" + user["email"] + "', jmeno = '" + user["jmeno"] + "' WHERE id = " + str(user["id"]) + "\n"
     return sql
 
 
