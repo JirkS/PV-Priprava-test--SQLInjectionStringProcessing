@@ -21,7 +21,7 @@ def check_name(name_t):
 
 
 def check_email(email_t):
-    regex_rule = r'^[a-zA-Z0-9]+.?[a-zA-Z0-9]+\@[a-zA-Z]+\.(com|cz){1}$'
+    regex_rule = r'^[a-zA-Z0-9]+\.?[a-zA-Z0-9]*\@[a-zA-Z]+\.(com|cz){1}$'
     if re.match(regex_rule, email_t):
         return True
     else:

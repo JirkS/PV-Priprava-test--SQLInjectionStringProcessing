@@ -21,7 +21,7 @@ def check_name(name_t):
 
 
 def check_order(order):
-    regex_rule = r'^([a-zA-Z]+\ ?[a-zA-Z]*\,?\ ?)+$'
+    regex_rule = r'^(([a-zA-Z]+\ ?)*\,?\ ?)+$'
     if re.match(regex_rule, order):
         return True
     else:
